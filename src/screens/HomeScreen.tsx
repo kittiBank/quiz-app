@@ -1,9 +1,16 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import type { StackNavigationProp } from "@react-navigation/stack";
+
+type RootStackParamList = {
+  Home: undefined;
+  Quiz: undefined;
+  Leaderboard: undefined;
+};
 
 const HomeScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   return (
     <View style={styles.container}>
@@ -11,14 +18,14 @@ const HomeScreen = () => {
 
       <TouchableOpacity
         style={styles.button}
-        // onPress={() => navigation.navigate('Quiz')}
+        onPress={() => navigation.navigate("Quiz")}
       >
         <Text style={styles.buttonText}>Let's Start</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.button}
-        // onPress={() => navigation.navigate('Leaderboard')}
+        onPress={() => navigation.navigate("Leaderboard")}
       >
         <Text style={styles.buttonText}>Leaderboard</Text>
       </TouchableOpacity>
@@ -41,7 +48,7 @@ const styles = StyleSheet.create({
   button: {
     width: "80%",
     paddingVertical: 16,
-    backgroundColor: "#264fd6ff",
+    backgroundColor: "#4064dbff",
     borderRadius: 8,
     marginVertical: 10,
     alignItems: "center",
